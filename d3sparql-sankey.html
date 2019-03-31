@@ -2,9 +2,9 @@
 <meta charset="utf-8">
 <html>
   <head>
-    <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.css"/>
-    <script src="lib/d3/d3.v3.min.js"></script>
-    <script src="lib/d3/sankey.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-sankey/0.7.1/d3-sankey.js"></script>
     <script src="d3sparql.js"></script>
     <script>
     function exec() {
@@ -61,43 +61,14 @@
       <form class="form-inline">
         <label>SPARQL endpoint:</label>
         <div class="input-append">
-          <input id="endpoint" class="span5" value="http://dbpedia.org/sparql" type="text">
+          <input id="endpoint" class="span5" value="http://stardog-dev:5820/dj-pulsar/query" type="text">
           <button class="btn" type="button" onclick="exec()">Query</button>
           <button class="btn" type="button" onclick="exec_offline()">Use cache</button>
           <button class="btn" type="button" onclick="toggle()"><i id="button" class="icon-chevron-up"></i></button>
         </div>
       </form>
       <textarea id="sparql" class="span9" rows=15>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX dbpedia-owl: <http://dbpedia.org/ontology/>
-PREFIX dbpprop: <http://dbpedia.org/property/>
-PREFIX dbpedia: <http://dbpedia.org/resource/>
-
-SELECT DISTINCT ?parent ?parent_name ?child ?child_name
-WHERE {
-  VALUES ?root { dbpedia:Fortran }
-  ?root   rdf:type dbpedia-owl:ProgrammingLanguage ;
-          rdfs:label ?root_label .
-  ?parent rdf:type dbpedia-owl:ProgrammingLanguage ;
-          rdfs:label ?parent_label ;
-          dbpprop:year ?parent_year .
-  ?child  rdf:type dbpedia-owl:ProgrammingLanguage ;
-          rdfs:label ?child_label ;
-          dbpprop:year ?child_year .
-  ?root   dbpedia-owl:influenced* ?child .
-  ?parent dbpedia-owl:influenced ?child .
-  FILTER (?parent_year > 1950 and ?parent_year < 2020)
-  FILTER (?child_year > 1950 and ?child_year < 2020)
-  FILTER (?parent_year < ?child_year)
-  FILTER (?root != ?child)
-  FILTER (?parent != ?child)
-  FILTER (LANG(?root_label) = 'en')
-  FILTER (LANG(?parent_label) = 'en')
-  FILTER (LANG(?child_label) = 'en')
-  BIND (replace(?parent_label, " .programming language.", "") AS ?parent_name)
-  BIND (replace(?child_label, " .programming language.", "") AS ?child_name)
-}
+select * where {?s ?p ?o} limit 20
       </textarea>
     </div>
     <div id="result"></div>

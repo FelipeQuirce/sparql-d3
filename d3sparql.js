@@ -58,8 +58,11 @@ var d3sparql = {
 d3sparql.fetch = function(url, callback) {
   if (d3sparql.debug) { console.log(url) }
   var mime = "application/sparql-results+json"
-  d3.xhr(url, mime, function(request) {
-    var json = request.responseText
+  d3.xhr(url, mime)
+  .header("Authorization", "Basic "+btoa("admin" + ":" + "xso2tk6r"))
+  .header("Access-Control-Allow-Headers", "Authorization")
+  .get( function(error, data) {
+    var json = data.responseText
     if (d3sparql.debug) { console.log(json) }
     callback(JSON.parse(json))
   })
@@ -799,9 +802,9 @@ d3sparql.forcegraph = function(json, config) {
   var opts = {
     "radius":    config.radius    || function(d) { return d.value ? scale(d.value) : 1 + d.label.length },
     "charge":    config.charge    || -500,
-    "distance":  config.distance  || 50,
-    "width":     config.width     || 1000,
-    "height":    config.height    || 750,
+    "distance":  config.distance  || 100,
+    "width":     config.width     || 100,
+    "height":    config.height    || 75,
     "label":     config.label     || false,
     "selector":  config.selector  || null
   }
