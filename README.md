@@ -1,11 +1,11 @@
-d3sparql.js
+js/d3sparql.js
 ===========
 
 JavaScript library for executing SPARQL query and transforming resulted JSON for visualization in D3.js.
 
 ### Description
 
-Semantic Web technologies are getting widely used in information sciences along with the Linked Open Data (LOD) initiative and RDF data are exposed at SPARQL endpoints around the world. SPARQL query is used to search those endpoints and the results are obtained as a SPARQL Query Results XML Format or a SPARQL Query Results JSON Format, both are essentially tabular structured data. To effectively represent the SPARQL results, appropriate visualization methods are highly demanded. To create and control dynamic graphical representation of data on the Web, the D3.js JavaScript library is getting popularity as a generic framework based on the widely accepted Web standards such as SVG, JavaScript, HTML5 and CSS. A variety of visualization examples implemented with the D3.js library are already freely available, however, each of them depends on a predefined JSON data structure that differs from the JSON structure returned from SPARQL endpoints. Therefore, it is expected to largely reduce development costs of Semantic Web visualization if a JavaScript library is available which can transform SPARQL Query Results JSON Format into JSON data structures consumed by the D3.js. The d3sparql.js is developed as a generic JavaScript library to fill this gap which can be used to query SPARQL endpoints as an AJAX call and provides various callback functions to visualize the obtained results.
+Semantic Web technologies are getting widely used in information sciences along with the Linked Open Data (LOD) initiative and RDF data are exposed at SPARQL endpoints around the world. SPARQL query is used to search those endpoints and the results are obtained as a SPARQL Query Results XML Format or a SPARQL Query Results JSON Format, both are essentially tabular structured data. To effectively represent the SPARQL results, appropriate visualization methods are highly demanded. To create and control dynamic graphical representation of data on the Web, the D3.js JavaScript library is getting popularity as a generic framework based on the widely accepted Web standards such as SVG, JavaScript, HTML5 and CSS. A variety of visualization examples implemented with the D3.js library are already freely available, however, each of them depends on a predefined JSON data structure that differs from the JSON structure returned from SPARQL endpoints. Therefore, it is expected to largely reduce development costs of Semantic Web visualization if a JavaScript library is available which can transform SPARQL Query Results JSON Format into JSON data structures consumed by the D3.js. The js/d3sparql.js is developed as a generic JavaScript library to fill this gap which can be used to query SPARQL endpoints as an AJAX call and provides various callback functions to visualize the obtained results.
 
 ### Currently supports
 
@@ -28,7 +28,7 @@ Semantic Web technologies are getting widely used in information sciences along 
 <html>
  <head>
   <script src="http://d3js.org/d3.v3.min.js"></script>
-  <script src="d3sparql.js"></script>
+  <script src="js/d3sparql.js"></script>
   <script>
   function exec() {
     /* Uncomment to see debug information in console */
@@ -81,11 +81,11 @@ Semantic Web technologies are getting widely used in information sciences along 
 
 ### License
 
-* The d3sparql.js library is distributed under the same license as D3.js's ([BSD license](http://opensource.org/licenses/BSD-3-Clause)).
+* The js/d3sparql.js library is distributed under the same license as D3.js's ([BSD license](http://opensource.org/licenses/BSD-3-Clause)).
 
 ### ChangeLog
 
-See details at https://github.com/ktym/d3sparql/commits/master/d3sparql.js
+See details at https://github.com/ktym/d3sparql/commits/master/js/d3sparql.js
 
 * 2013-01-28 Project started
 * 2014-07-03 Made publicly available at GitHub
